@@ -1,4 +1,4 @@
-from pages.elements_page import TextBoxPage, CheckBoxPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage
 import pytest
 import time
 
@@ -29,3 +29,19 @@ class TestElements:
             output_result = check_box_page.get_output_result()
             check_box_page.should_be_equal_checkbox_and_output(input_checkbox, output_result)
             time.sleep(5)
+
+    class TestRadioButton:
+
+        def test_radio_button(self, driver):
+            url = "https://demoqa.com/radio-button"
+            radio_button_page = RadioButtonPage(driver, url)
+            radio_button_page.open()
+            radio_button_page.click_on_the_radio_button('yes')
+            output_yes = radio_button_page.get_output_result()
+            radio_button_page.click_on_the_radio_button('impressive')
+            output_impressive = radio_button_page.get_output_result()
+            radio_button_page.click_on_the_radio_button('no')
+            output_no = radio_button_page.get_output_result()
+            assert output_yes == 'Yes', " 'Yes' is not selected"
+            assert output_impressive == 'Impressive', " 'Impressive' is not selected"
+            assert output_no == 'No', " 'No' is not selected"

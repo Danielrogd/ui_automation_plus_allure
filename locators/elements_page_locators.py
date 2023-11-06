@@ -24,3 +24,11 @@ class CheckBoxPageLocators:
     CHECKED_ITEMS = (By.XPATH, "//*[name()='svg'][@class='rct-icon rct-icon-check']")
     TITLE_ITEM = ".//ancestor::span[@class='rct-text']"
     TEXT_SUCCESS = (By.XPATH, "//span[@class='text-success']")
+
+
+class RadioButtonPageLocators:
+
+    YES_RADIOBUTTON = (By.XPATH, "//label[@for='yesRadio']")
+    IMPRESSIVE_RADIOBUTTON = (By.XPATH, "//label[@for='impressiveRadio']")
+    NO_RADIOBUTTON = (By.XPATH, "//label[@for='noRadio']")
+    TEXT_SUCCESS_OUTPUT = (By.XPATH, "//span[@class='text-success']")
