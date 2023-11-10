@@ -17,7 +17,6 @@ class TextBoxPageLocators:
 
 
 class CheckBoxPageLocators:
-
     EXPAND_ALL_BUTTON = (By.XPATH, "//button[@class='rct-option rct-option-expand-all']")
     ITEM_LIST = (By.XPATH, "//span[@class='rct-title']")
     ALL_CLOSE_BTN = (By.XPATH, "//button[@class='rct-option rct-option-collapse-all']")
@@ -27,8 +26,26 @@ class CheckBoxPageLocators:
 
 
 class RadioButtonPageLocators:
-
     YES_RADIOBUTTON = (By.XPATH, "//label[@for='yesRadio']")
     IMPRESSIVE_RADIOBUTTON = (By.XPATH, "//label[@for='impressiveRadio']")
     NO_RADIOBUTTON = (By.XPATH, "//label[@for='noRadio']")
     TEXT_SUCCESS_OUTPUT = (By.XPATH, "//span[@class='text-success']")
+
+
+class WebTablePageLocators:
+    # add person form
+    ADD_BUTTON = (By.XPATH, "//button[@id='addNewRecordButton']")
+    FIRSTNAME_INPUT = (By.XPATH, "//input[@id='firstName']")
+    LASTNAME_INPUT = (By.XPATH, "//input[@id='lastName']")
+    EMAIL_INPUT = (By.XPATH, "//input[@id='userEmail']")
+    AGE_INPUT = (By.XPATH, "//input[@id='age']")
+    SALARY_INPUT = (By.XPATH, "//input[@id='salary']")
+    DEPARTMENT_INPUT = (By.XPATH, "//input[@id='department']")
+    SUBMIT = (By.XPATH, "//button[@id='submit']")
+
+    # table
+
+    FULL_PEOPLE_LIST = (By.XPATH, "//div[@class='rt-tr-group']")
+    SEARCH_INPUT = (By.XPATH, "//input[@id='searchBox']")
+    DELETE_BUTTON = (By.XPATH, "//span[@title='Delete']")
+    ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
