@@ -44,8 +44,15 @@ class WebTablePageLocators:
     SUBMIT = (By.XPATH, "//button[@id='submit']")
 
     # table
-
     FULL_PEOPLE_LIST = (By.XPATH, "//div[@class='rt-tr-group']")
     SEARCH_INPUT = (By.XPATH, "//input[@id='searchBox']")
     DELETE_BUTTON = (By.XPATH, "//span[@title='Delete']")
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
+    NO_DATA_FIND_TEXT = (By.XPATH, "//div[@class='rt-noData']")
+
+    # update
+    UPDATE_BUTTON = (By.XPATH, "//span[@title='Edit']")
+
+    #change_count_of_rows
+    SELECT_BTN = (By.XPATH, "//option[@value]")
+    ROW_COUNT = (By.XPATH, "//div[@class='rt-tr-group']")

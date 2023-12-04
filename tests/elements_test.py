@@ -68,4 +68,37 @@ class TestWebTable:
         table_result = web_table_page.check_search_person()
         print(key_word)
         print(table_result)
-        assert key_word in table_result , "person didn`t found in the table "
+        assert key_word in table_result, "person didn`t found in the table "
+
+    def test_web_table_update_person_info(self, driver):
+        url = "https://demoqa.com/webtables"
+        web_table_page = WebTablePage(driver, url)
+        web_table_page.open()
+        lastname = web_table_page.add_new_person()[1]
+        web_table_page.search_some_person(lastname)
+        age = web_table_page.update_person_info()
+        row = web_table_page.check_search_person()
+        assert age in row, f" Person card has not been changed. age:{age} is not found in row:{row}"
+
+    def test_web_table_delete_person(self, driver):
+        url = "https://demoqa.com/webtables"
+        web_table_page = WebTablePage(driver, url)
+        web_table_page.open()
+        email = web_table_page.add_new_person()[3]
+        web_table_page.search_some_person(email)
+        web_table_page.delete_person()
+        text = web_table_page.check_deleted()
+        assert text == "No rows found"
+
+    def test_web_table_change_count_of_rows(self, driver):
+        url = "https://demoqa.com/webtables"
+        web_table_page = WebTablePage(driver, url)
+        web_table_page.open()
+        web_table_page.change_count_of_rows()
+        row_inputed = web_table_page.change_count_of_rows()[0]
+        row_checked = web_table_page.change_count_of_rows()[1]
+        assert row_inputed == row_checked, f"selected row count: {row_inputed} not equal checked row: {row_checked}"
+
+
+
+
