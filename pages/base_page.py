@@ -1,6 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
 
 
 class BasePage:
@@ -37,3 +38,8 @@ class BasePage:
         for item in checkbox:
             assert item in output, f" {item} checkbox is not in output text: {output}"
 
+    def action_double_click(self, element):
+        ActionChains(self.driver).double_click(element).perform()
+
+    def action_right_click(self, element):
+        ActionChains(self.driver).context_click(element).perform()

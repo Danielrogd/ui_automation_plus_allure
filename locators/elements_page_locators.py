@@ -56,3 +56,17 @@ class WebTablePageLocators:
     #change_count_of_rows
     SELECT_BTN = (By.XPATH, "//option[@value]")
     ROW_COUNT = (By.XPATH, "//div[@class='rt-tr-group']")
+
+
+class ButtonsPageLocators:
+    #click buttons
+    DOUBLE_CLICK_BTN = (By.XPATH, "//button[@id='doubleClickBtn']")
+    RIGHT_CLICK_BTN = (By.XPATH, "//button[@id='rightClickBtn']")
+    LIFT_CLICK_BTN = (By.XPATH, "//button[@class='btn btn-primary'][text() ='Click Me']")
+
+    #check text result
+    DOUBLE_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='doubleClickMessage']")
+    RIGHT_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='rightClickMessage']")
+    LEFT_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='dynamicClickMessage']")
+
+

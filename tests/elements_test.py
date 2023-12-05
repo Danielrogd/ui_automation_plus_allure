@@ -1,6 +1,6 @@
 import random
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
 import pytest
 import time
 
@@ -100,5 +100,19 @@ class TestWebTable:
         assert row_inputed == row_checked, f"selected row count: {row_inputed} not equal checked row: {row_checked}"
 
 
+class TestButtons:
 
+    def test_different_click_on_buttons(self, driver):
+        url = "https://demoqa.com/buttons"
+        buttons_page = ButtonsPage(driver, url)
+        buttons_page.open()
+        buttons_page.double_click_me_btn()
+        buttons_page.right_click_me_btn()
+        buttons_page.left_click_me_btn()
+        check_double_btn = buttons_page.check_double_click_me_btn()
+        check_right_btn = buttons_page.check_right_click_me_btn()
+        check_left_btn = buttons_page.check_left_click_me_btn()
+        assert check_double_btn == "You have done a double click", "Double click button was not pressed"
+        assert check_right_btn == "You have done a right click", "Right click button was not pressed"
+        assert check_left_btn == "You have done a dynamic click", "Left (dynamic id) click button was not pressed"
 

@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators
+    WebTablePageLocators, ButtonsPageLocators
 from pages.base_page import BasePage
 import random
 
@@ -157,3 +157,32 @@ class WebTablePage(BasePage):
         return len(row_count)
 
 
+class ButtonsPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def double_click_me_btn(self):
+        button = self.element_is_visible(self.locators.DOUBLE_CLICK_BTN)
+        self.action_double_click(button)
+        return button.text
+
+    def right_click_me_btn(self):
+        button = self.element_is_visible(self.locators.RIGHT_CLICK_BTN)
+        self.action_right_click(button)
+        return button.text
+
+    def left_click_me_btn(self):
+        button = self.element_is_visible(self.locators.LIFT_CLICK_BTN)
+        button.click()
+        return button.text
+
+    def check_double_click_me_btn(self):
+        message = self.element_is_visible(self.locators.DOUBLE_CLICK_BTN_RESULT).text
+        return message
+
+    def check_right_click_me_btn(self):
+        message = self.element_is_visible(self.locators.RIGHT_CLICK_BTN_RESULT).text
+        return message
+
+    def check_left_click_me_btn(self):
+        message = self.element_is_visible(self.locators.LEFT_CLICK_BTN_RESULT).text
+        return message
