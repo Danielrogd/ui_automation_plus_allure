@@ -70,3 +70,7 @@ class ButtonsPageLocators:
     LEFT_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='dynamicClickMessage']")
 
 
+class LinkPageLocators:
+    SIMPLE_LINK = (By.XPATH, "//a[@id='simpleLink']")
+    BAD_REQUEST = (By.XPATH, "//a[@id='bad-request']")
+

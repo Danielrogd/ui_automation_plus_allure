@@ -43,3 +43,5 @@ class BasePage:
 
     def action_right_click(self, element):
         ActionChains(self.driver).context_click(element).perform()
+
+    #def switch_to_new_tab(self):
