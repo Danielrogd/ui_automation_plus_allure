@@ -1,9 +1,13 @@
+import base64
+import os
+from gettext import find
+
 from selenium.webdriver.common.by import By
 import requests
 
-from generator.generator import generated_person
+from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators, LinkPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinkPageLocators, UploadDownloadPageLocators
 from pages.base_page import BasePage
 import random
 
@@ -210,3 +214,29 @@ class LinkPage(BasePage):
             self.element_is_present(self.locators.BAD_REQUEST).click()
         else:
             return request.status_code
+
+
+class UploadDownloadPage(BasePage):
+    locators = UploadDownloadPageLocators()
+
+    def download_file(self):
+        link = self.element_is_visible(self.locators.DOWNLOAD_BTN).get_attribute('href').split(',')
+        link_b = base64.b64decode(link[1])
+        current_dir = os.path.dirname(__file__)
+        generated_file_dir = os.path.join(current_dir, '../generator/GENERATED_FILE')
+        path_name_file = os.path.join(generated_file_dir, f'filetest{random.randint(0, 999)}.jpg')
+        with open(path_name_file, 'wb+') as file:
+            file.write(link_b)
+            check_file = os.path.exists(path_name_file)
+        os.remove(path_name_file)
+        return check_file
+
+
+    def upload_file(self):
+        file_name, path = generated_file()
+        self.element_is_visible(self.locators.UPLOAD_BTN).send_keys(path)
+        os.remove(path)
+        file_path_text = self.element_is_visible(self.locators.UPLOADED_FILE_PATH).text
+        file_name_result = (file_name.split('\\'))[-1]
+        file_path_text_result = (file_path_text.split('\\'))[-1]
+        return file_name_result, file_path_text_result

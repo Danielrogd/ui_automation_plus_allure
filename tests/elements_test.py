@@ -1,6 +1,8 @@
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinkPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinkPage, \
+    UploadDownloadPage
 import time
 import random
+
 
 class TestElements:
     class TestTextBox:
@@ -123,7 +125,6 @@ class TestLink:
         href_link, current_url = link_page.check_new_tab_simple_link()
         assert href_link == current_url, "Link is broken or url is incorrect"
 
-
     def tests_broken_link(self, driver):
         url = "https://demoqa.com/links"
         link_page = LinkPage(driver, url)
@@ -131,3 +132,19 @@ class TestLink:
         response_code = link_page.check_broken_link("https://demoqa.com/bad-request")
         assert response_code == 400, "Link is working or status code is not 400"
 
+
+class TestUploadDownload:
+
+    def test_upload_file(self, driver):
+        url = "https://demoqa.com/upload-download"
+        upload_download_page = UploadDownloadPage(driver, url)
+        upload_download_page.open()
+        file_name, file_path_result = upload_download_page.upload_file()
+        assert file_name == file_path_result, "File did not uploaded"
+
+    def test_download_file(self,driver):
+        url = "https://demoqa.com/upload-download"
+        upload_download_page = UploadDownloadPage(driver, url)
+        upload_download_page.open()
+        check = upload_download_page.download_file()
+        assert check is True, "File did not downloaded"
