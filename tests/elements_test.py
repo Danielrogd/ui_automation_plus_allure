@@ -1,5 +1,5 @@
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinkPage, \
-    UploadDownloadPage
+    UploadDownloadPage, DynamicPropertiesPage
 import time
 import random
 
@@ -142,9 +142,41 @@ class TestUploadDownload:
         file_name, file_path_result = upload_download_page.upload_file()
         assert file_name == file_path_result, "File did not uploaded"
 
-    def test_download_file(self,driver):
+    def test_download_file(self, driver):
         url = "https://demoqa.com/upload-download"
         upload_download_page = UploadDownloadPage(driver, url)
         upload_download_page.open()
         check = upload_download_page.download_file()
         assert check is True, "File did not downloaded"
+
+
+class TestDynamicProperties:
+
+    def test_text_random_id(self, driver):
+        url = "https://demoqa.com/dynamic-properties"
+        dynamic_properties_page = DynamicPropertiesPage(driver, url)
+        dynamic_properties_page.open()
+        txt_result = dynamic_properties_page.text_random_id()
+        assert txt_result == "This text has random Id", "Text with random id is not found"
+
+    def test_btn_click_after_five_second(self, driver):
+        url = "https://demoqa.com/dynamic-properties"
+        dynamic_properties_page = DynamicPropertiesPage(driver, url)
+        dynamic_properties_page.open()
+        btn_after_five_sec = dynamic_properties_page.btn_click_after_five_second()
+        assert btn_after_five_sec is True, "Button is not clickable/found"
+
+    def test_btn_txt_color_switch(self,driver):
+        url = "https://demoqa.com/dynamic-properties"
+        dynamic_properties_page = DynamicPropertiesPage(driver, url)
+        dynamic_properties_page.open()
+        color_before, color_after = dynamic_properties_page.btn_txt_color_switch()
+        assert color_before != color_after, "Color did`t change"
+
+    def test_btn_visible_after_five_second(self, driver):
+        url = "https://demoqa.com/dynamic-properties"
+        dynamic_properties_page = DynamicPropertiesPage(driver, url)
+        dynamic_properties_page.open()
+        btn_visible = dynamic_properties_page.btn_visible_after_five_second()
+        assert btn_visible is True, "Button not visible"
+

@@ -53,18 +53,18 @@ class WebTablePageLocators:
     # update
     UPDATE_BUTTON = (By.XPATH, "//span[@title='Edit']")
 
-    #change_count_of_rows
+    # change_count_of_rows
     SELECT_BTN = (By.XPATH, "//option[@value]")
     ROW_COUNT = (By.XPATH, "//div[@class='rt-tr-group']")
 
 
 class ButtonsPageLocators:
-    #click buttons
+    # click buttons
     DOUBLE_CLICK_BTN = (By.XPATH, "//button[@id='doubleClickBtn']")
     RIGHT_CLICK_BTN = (By.XPATH, "//button[@id='rightClickBtn']")
     LIFT_CLICK_BTN = (By.XPATH, "//button[@class='btn btn-primary'][text() ='Click Me']")
 
-    #check text result
+    # check text result
     DOUBLE_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='doubleClickMessage']")
     RIGHT_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='rightClickMessage']")
     LEFT_CLICK_BTN_RESULT = (By.XPATH, "//p[@id='dynamicClickMessage']")
@@ -80,3 +80,11 @@ class UploadDownloadPageLocators:
     UPLOADED_FILE_PATH = (By.XPATH, "//p[@id='uploadedFilePath']")
     DOWNLOAD_BTN = (By.XPATH, "//a[@id='downloadButton']")
 
+
+class DynamicPropertiesPageLocators:
+    TXT_RANDOM_ID = (By.XPATH, "//div[@class='col-12 mt-4 col-md-6']//p")
+    BTN_BEFORE_FIVE_SECOND = (By.XPATH, "//button[@id='enableAfter'][@disabled][@type='button']")
+    BTN_AFTER_FIVE_SECOND = (By.XPATH, "//button[@id='enableAfter']")
+    BTN_TXT_COLOR_BEFORE = (By.XPATH, "//button[@id='colorChange']")
+    BTN_TXT_COLOR_AFTER = (By.XPATH, "//button[contains(@class, 'text-danger')]")
+    BTN_VISIBLE_AFTER_FIVE_SECOND = (By.XPATH, "//button[@id='visibleAfter']")

@@ -7,7 +7,8 @@ import requests
 
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators, LinkPageLocators, UploadDownloadPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinkPageLocators, UploadDownloadPageLocators, \
+    DynamicPropertiesPageLocators
 from pages.base_page import BasePage
 import random
 
@@ -231,7 +232,6 @@ class UploadDownloadPage(BasePage):
         os.remove(path_name_file)
         return check_file
 
-
     def upload_file(self):
         file_name, path = generated_file()
         self.element_is_visible(self.locators.UPLOAD_BTN).send_keys(path)
@@ -240,3 +240,26 @@ class UploadDownloadPage(BasePage):
         file_name_result = (file_name.split('\\'))[-1]
         file_path_text_result = (file_path_text.split('\\'))[-1]
         return file_name_result, file_path_text_result
+
+
+class DynamicPropertiesPage(BasePage):
+    locators = DynamicPropertiesPageLocators()
+
+    def text_random_id(self):
+        text = self.element_is_visible(self.locators.TXT_RANDOM_ID).text
+        return text
+
+    def btn_click_after_five_second(self):
+        if self.element_is_clickable(self.locators.BTN_AFTER_FIVE_SECOND):
+            return True
+
+    def btn_txt_color_switch(self):
+        button_before = self.element_is_visible(self.locators.BTN_TXT_COLOR_BEFORE)
+        color_before = button_before.value_of_css_property('color')
+        button_after = self.element_is_visible(self.locators.BTN_TXT_COLOR_AFTER)
+        color_after = button_after.value_of_css_property('color')
+        return color_before, color_after
+
+    def btn_visible_after_five_second(self):
+        if self.element_is_visible(self.locators.BTN_VISIBLE_AFTER_FIVE_SECOND):
+            return True
