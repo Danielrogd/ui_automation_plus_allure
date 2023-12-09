@@ -7,6 +7,7 @@ from selenium.webdriver import Keys
 from generator.generator import generated_person, generated_file
 from locators.form_page_locators import FormPageLocators
 from pages.base_page import BasePage
+import subprocess
 
 
 class FormPage(BasePage):
@@ -47,7 +48,7 @@ class FormPage(BasePage):
 
         file_input = self.element_is_visible(self.locators.FILE_INPUT)
         file_input.send_keys(path)
-        os.remove(path)
+        subprocess.run("del " + path, shell=True)
 
         current_address = self.element_is_visible(self.locators.CURRENT_ADDRESS)
         current_address.send_keys(person.current_address)
