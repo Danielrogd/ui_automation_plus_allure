@@ -5,7 +5,7 @@ import random
 
 
 class TestElements:
-    class TestTextBox:
+    class TestTextBoxPage:
 
         def test_text_box(self, driver):
             url = "https://demoqa.com/text-box"
@@ -19,7 +19,7 @@ class TestElements:
             assert current_address == output_cur_addr, "current address does not match to output_current address"
             assert permanent_address == output_perm_addr, "permanent address does not match to output permanent address"
 
-    class TestCheckBox:
+    class TestCheckBoxPage:
         def test_check_box(self, driver):
             url = "https://demoqa.com/checkbox"
             check_box_page = CheckBoxPage(driver, url)
@@ -31,7 +31,7 @@ class TestElements:
             check_box_page.should_be_equal_checkbox_and_output(input_checkbox, output_result)
             time.sleep(5)
 
-    class TestRadioButton:
+    class TestRadioButtonPage:
 
         def test_radio_button(self, driver):
             url = "https://demoqa.com/radio-button"
@@ -48,7 +48,7 @@ class TestElements:
             assert output_no == 'No', " 'No' is not selected"
 
 
-class TestWebTable:
+class TestWebTablePage:
 
     def test_web_table_add_person(self, driver):
         url = "https://demoqa.com/webtables"
@@ -99,7 +99,7 @@ class TestWebTable:
         assert row_inputed == row_checked, f"selected row count: {row_inputed} not equal checked row: {row_checked}"
 
 
-class TestButtons:
+class TestButtonsPage:
 
     def test_different_click_on_buttons(self, driver):
         url = "https://demoqa.com/buttons"
@@ -116,7 +116,7 @@ class TestButtons:
         assert check_left_btn == "You have done a dynamic click", "Left (dynamic id) click button was not pressed"
 
 
-class TestLink:
+class TestLinkPage:
 
     def test_check_link(self, driver):
         url = "https://demoqa.com/links"
@@ -133,7 +133,7 @@ class TestLink:
         assert response_code == 400, "Link is working or status code is not 400"
 
 
-class TestUploadDownload:
+class TestUploadDownloadPage:
 
     def test_upload_file(self, driver):
         url = "https://demoqa.com/upload-download"
@@ -150,7 +150,7 @@ class TestUploadDownload:
         assert check is True, "File did not downloaded"
 
 
-class TestDynamicProperties:
+class TestDynamicPropertiesPage:
 
     def test_text_random_id(self, driver):
         url = "https://demoqa.com/dynamic-properties"

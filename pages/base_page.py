@@ -44,3 +44,10 @@ class BasePage:
     def action_right_click(self, element):
         ActionChains(self.driver).context_click(element).perform()
 
+    def action_tripple_click(self, element):
+        actions = ActionChains(self.driver)
+        actions.double_click(element).click(element).perform()
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementById('close-fixedban').remove();")

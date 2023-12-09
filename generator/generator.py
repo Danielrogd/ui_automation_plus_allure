@@ -19,7 +19,8 @@ def generated_person():
         email=faker_ru.email(),
         current_address=faker_ru.address(),
         permanent_address=faker_ru.address(),
-
+        mobile=faker_ru.msisdn(),
+        date_birth=date_birth_gen(),
     )
 
 
@@ -30,3 +31,11 @@ def generated_file():
     with open(path, 'w+') as file:
         file.write(f'hello world{random.randint(0, 999)}')
     return file.name, path
+
+
+def date_birth_gen():
+    day = random.randint(1,25)
+    month = random.randint(1, 12)
+    year = random.randint(1980, 2005)
+    result = f'{month} {day} {year}'
+    return result
