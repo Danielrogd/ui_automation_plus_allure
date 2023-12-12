@@ -1,6 +1,6 @@
 import time
 
-from pages.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage, FramePage
+from pages.alerts_frame_windows_page import BrowserWindowsPage, AlertsPage, FramePage, NestedFramePage
 
 
 class TestAlertFrameWindows:
@@ -62,3 +62,13 @@ class TestAlertFrameWindows:
             check_assert_two_text = ['This is a sample page', '100px', '100px']
             assert frame_one_text == check_assert_one_text, "Frame not found"
             assert frame_two_text == check_assert_two_text, "Frame not found"
+
+    class TestNestedFramesPage:
+
+        def test_nested_frames(self, driver):
+            url = "https://demoqa.com/nestedframes"
+            nested_frame_page = NestedFramePage(driver, url)
+            nested_frame_page.open()
+            parent_frame, child_frame = nested_frame_page.nested_frame_check()
+            assert parent_frame == "Parent frame", "Nested frame not found"
+            assert child_frame == "Child Iframe", "Nested frame not found"

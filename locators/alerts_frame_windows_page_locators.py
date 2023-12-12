@@ -22,3 +22,10 @@ class FramePageLocators:
     TEXT_IN_FRAME = (By.XPATH, "//h1[@id='sampleHeading']")
     FRAME_LOCATORS = {"frame1": FIRST_FRAME, "frame2": SECOND_FRAME}
 
+
+class NestedFramePageLocators:
+    PARENT_FRAME = (By.XPATH, "//iframe[@id='frame1']")
+    CHILD_FRAME = (By.XPATH, "//iframe[@srcdoc]")
+    PARENT_TEXT_IN_FRAME = (By.XPATH, "//body")
+    CHILD_TEXT_IN_FRAME = (By.XPATH, "//p")
+
