@@ -3,7 +3,8 @@ import time
 
 from selenium.common import UnexpectedAlertPresentException, NoAlertPresentException
 
-from locators.alerts_frame_windows_page_locators import BrowserWindowsPageLocators, AlertsPageLocators
+from locators.alerts_frame_windows_page_locators import BrowserWindowsPageLocators, AlertsPageLocators, \
+    FramePageLocators
 from pages.base_page import BasePage
 
 
@@ -55,3 +56,16 @@ class AlertsPage(BasePage):
         text_result = self.element_is_visible(self.locators.PROMT_BOX_ALERT_TEXT).text
         return text_result, text_promt
 
+
+class FramePage(BasePage):
+    locators = FramePageLocators()
+
+    def check_frame(self, frame_id):
+        frame_locator = self.locators.FRAME_LOCATORS.get(frame_id)
+        frame = self.element_is_present(frame_locator)
+        width = frame.get_attribute('width')
+        height = frame.get_attribute('height')
+        self.driver.switch_to.frame(frame)
+        frame_text = self.element_is_present(self.locators.TEXT_IN_FRAME).text
+        self.driver.switch_to.default_content()
+        return [frame_text, width, height]

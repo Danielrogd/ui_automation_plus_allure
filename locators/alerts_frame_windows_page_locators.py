@@ -16,3 +16,9 @@ class AlertsPageLocators:
     PROMT_BOX_ALERT_TEXT = (By.XPATH, "//span[@id='promptResult']")
 
 
+class FramePageLocators:
+    FIRST_FRAME = (By.XPATH, "//iframe[@id='frame1']")
+    SECOND_FRAME = (By.XPATH, "//iframe[@id='frame2']")
+    TEXT_IN_FRAME = (By.XPATH, "//h1[@id='sampleHeading']")
+    FRAME_LOCATORS = {"frame1": FIRST_FRAME, "frame2": SECOND_FRAME}
+
