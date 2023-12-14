@@ -1,6 +1,5 @@
-from data.data import Person
+from data.data import Person, Color
 from faker import Faker
-
 
 faker_ru = Faker('ru_Ru')
 Faker.seed()
@@ -15,3 +14,8 @@ def generated_person():
 
     )
 
+
+def generated_color():
+    yield Color(
+        color_name=['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Black', 'White', 'Indigo', 'Magenta', 'Aqua']
+    )
