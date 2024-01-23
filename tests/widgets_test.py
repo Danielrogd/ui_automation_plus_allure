@@ -1,6 +1,6 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
 
 
 class TestWidgets:
@@ -78,3 +78,18 @@ class TestProgressBarPage:
         value_before, value_after = progress_bar_page.change_progress_bar_value()
         assert value_before != value_after, "Progress bar value did not changed"
 
+
+class TestTabsPage:
+
+    def test_tabs_page(self, driver):
+        url = "https://demoqa.com/tabs"
+        tabs_page = TabsPage(driver, url)
+        tabs_page.open()
+        what_button, what_content = tabs_page.check_tabs('what')
+        origin_button, origin_content = tabs_page.check_tabs('origin')
+        use_button, use_content = tabs_page.check_tabs('use')
+        more_button, more_content = tabs_page.check_tabs('more')
+        assert what_button == 'what' and what_content != 0, 'tab "what" was not pressed or text is missing'
+        assert origin_button == 'origin' and origin_content != 0, 'tab "origin" was not pressed or text is missing'
+        assert use_button == 'use' and use_content != 0, 'tab "use" was not pressed or text is missing'
+        assert more_button == 'more' and more_content != 0, 'tab "more" was not pressed or text is missing'

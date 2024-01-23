@@ -43,3 +43,12 @@ class ProgressBarPageLocators:
     PROGRESS_BAR_VALUE = (By.XPATH, "//div[@role='progressbar']")
 
 
+class TabsPageLocators:
+    TAB_WHAT = (By.XPATH, "//a[@id='demo-tab-what']")
+    TAB_WHAT_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-what']")
+    TAB_ORIGIN = (By.XPATH, "//a[@id='demo-tab-origin']")
+    TAB_ORIGIN_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-origin']")
+    TAB_USE = (By.XPATH, "//a[@id='demo-tab-use']")
+    TAB_USE_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-use']")
+    TAB_MORE = (By.XPATH, "//a[@id='demo-tab-more']")
+    TAB_MORE_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-more']")
