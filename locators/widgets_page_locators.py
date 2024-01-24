@@ -52,3 +52,19 @@ class TabsPageLocators:
     TAB_USE_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-use']")
     TAB_MORE = (By.XPATH, "//a[@id='demo-tab-more']")
     TAB_MORE_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-more']")
+
+
+class ToolTipsPageLocators:
+    TOOL_TIP_BTN = (By.XPATH, "//button[@id='toolTipButton']")
+    TOOL_TIP_BTN_CHECK = (By.XPATH, "//button[@aria-describedby='buttonToolTip']")
+
+    TOOL_TIP_TEXT_INPUT_FIELD = (By.XPATH, "//input[@id='toolTipTextField']")
+    TOOL_TIP_TEXT_INPUT_FIELD_CHECK = (By.XPATH, "//input[@aria-describedby='textFieldToolTip']")
+
+    TOOL_TIP_CONTRARY = (By.XPATH, "//a[text()='Contrary']")
+    TOOL_TIP_CONTRARY_CHECK = (By.XPATH, "//a[@aria-describedby='contraryTexToolTip']")
+
+    TOOL_TIP_DIGITS = (By.XPATH, "//a[text()='1.10.32']")
+    TOOL_TIP_DIGITS_CHECK = (By.XPATH, "//a[@aria-describedby='sectionToolTip']")
+
+    TOOL_TIPS_INNER = (By.XPATH, "//div[@class='tooltip-inner']")

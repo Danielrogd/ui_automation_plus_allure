@@ -1,6 +1,7 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
+    ToolTipsPage
 
 
 class TestWidgets:
@@ -93,3 +94,16 @@ class TestTabsPage:
         assert origin_button == 'origin' and origin_content != 0, 'tab "origin" was not pressed or text is missing'
         assert use_button == 'use' and use_content != 0, 'tab "use" was not pressed or text is missing'
         assert more_button == 'more' and more_content != 0, 'tab "more" was not pressed or text is missing'
+
+
+class TestToolTipsPage:
+
+    def test_tool_tip(self, driver):
+        url = "https://demoqa.com/tool-tips"
+        tool_tip_page = ToolTipsPage(driver, url)
+        tool_tip_page.open()
+        btn_text, field_text, contrary_text, digits_text = tool_tip_page.check_tool_tips()
+        assert btn_text == 'You hovered over the Button', 'hover missing or incorrect content'
+        assert field_text == 'You hovered over the text field', 'hover missing or incorrect content'
+        assert contrary_text == 'You hovered over the Contrary', 'hover missing or incorrect content'
+        assert digits_text == 'You hovered over the 1.10.32', 'hover missing or incorrect content'
