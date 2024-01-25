@@ -68,3 +68,7 @@ class ToolTipsPageLocators:
     TOOL_TIP_DIGITS_CHECK = (By.XPATH, "//a[@aria-describedby='sectionToolTip']")
 
     TOOL_TIPS_INNER = (By.XPATH, "//div[@class='tooltip-inner']")
+
+
+class MenuPageLocators:
+    MENU_ITEM_LIST = (By.XPATH, "//ul[@id='nav']//li")

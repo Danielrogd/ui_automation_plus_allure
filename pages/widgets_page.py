@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators
 from pages.base_page import BasePage
 
 
@@ -185,7 +185,22 @@ class ToolTipsPage(BasePage):
         contrary_locators = [self.locators.TOOL_TIP_CONTRARY, self.locators.TOOL_TIP_CONTRARY_CHECK]
         tool_tip_text_contrary = self.get_text_from_tool_tips(contrary_locators)
 
-        digits_locators = [self.locators.TOOL_TIP_DIGITS,self.locators.TOOL_TIP_DIGITS_CHECK]
+        digits_locators = [self.locators.TOOL_TIP_DIGITS, self.locators.TOOL_TIP_DIGITS_CHECK]
         tool_tip_text_digits = self.get_text_from_tool_tips(digits_locators)
 
         return tool_tip_text_btn, tool_tip_text_input_text_field, tool_tip_text_contrary, tool_tip_text_digits
+
+
+class MenuPage(BasePage):
+    locators = MenuPageLocators()
+
+    def check_menu(self):
+        menu_item_list = self.element_are_present(self.locators.MENU_ITEM_LIST)
+        need_to_check = ['Main Item 1', 'Main Item 2\nSub Item\nSub Item\nSUB SUB LIST »', 'Sub Item', 'Sub Item',
+                         'SUB SUB LIST »\nSub Sub Item 1\nSub Sub Item 2', 'Sub Sub Item 1',
+                         'Sub Sub Item 2', 'Main Item 3']
+        data = []
+        for item in menu_item_list:
+            self.action_move_to_element(item)
+            data.append(item.text)
+        return data, need_to_check
