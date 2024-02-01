@@ -15,3 +15,16 @@ class SelectablePageLocators:
     TAB_LIST_ITEM_ACTIVE = (By.XPATH, "//li[@class='mt-2 list-group-item active list-group-item-action']")
     TAB_GRID_ITEM = (By.XPATH, "//li[@class='list-group-item list-group-item-action']")
     TAB_GRID_ITEM_ACTIVE = (By.XPATH, "//li[@class='list-group-item active list-group-item-action']")
+
+
+class ResizablePageLocators:
+    HANDLE = "/span[@class='react-resizable-handle react-resizable-handle-se']"
+    LIMIT = "//div[@id='resizableBoxWithRestriction']"
+    NO_LIMIT = "//div[@id='resizable']"
+
+    LIMIT_BOX = (By.XPATH, f"{LIMIT}")
+    NO_LIMIT_BOX = (By.XPATH, f"{NO_LIMIT}")
+    LIMIT_HANDLE = (By.XPATH, f"{LIMIT}{HANDLE}")
+    NO_LIMIT_HANDLE = (By.XPATH, f"{NO_LIMIT}{HANDLE}")
+
+
