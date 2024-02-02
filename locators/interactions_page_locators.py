@@ -21,10 +21,44 @@ class ResizablePageLocators:
     HANDLE = "/span[@class='react-resizable-handle react-resizable-handle-se']"
     LIMIT = "//div[@id='resizableBoxWithRestriction']"
     NO_LIMIT = "//div[@id='resizable']"
-
     LIMIT_BOX = (By.XPATH, f"{LIMIT}")
     NO_LIMIT_BOX = (By.XPATH, f"{NO_LIMIT}")
     LIMIT_HANDLE = (By.XPATH, f"{LIMIT}{HANDLE}")
     NO_LIMIT_HANDLE = (By.XPATH, f"{NO_LIMIT}{HANDLE}")
+
+
+class DroppablePageLocators:
+    #Simple
+    SIMPLE_TAB = (By.XPATH, "//a[@id='droppableExample-tab-simple']")
+    DRAG_ME_SIMPLE = (By.XPATH, "//div[@class='simple-drop-container']/div[@id='draggable']")
+    DROP_HERE_SIMPLE = (By.XPATH, "//div[@class='simple-drop-container']/div[@id='droppable']")
+
+    #Accept
+    ACCEPT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-accept']")
+    ACCEPTABLE = (By.XPATH, "//div[@class='accept-drop-container']//div[@id='acceptable']")
+    NOT_ACCEPTABLE = (By.XPATH, "//div[@class='accept-drop-container']//div[@id='notAcceptable']")
+    DROP_HERE_ACCEPT = (By.XPATH, "//div[@class='accept-drop-container']//div[@class='drop-box ui-droppable']")
+
+    #Prevent propogation
+    PREVENT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-preventPropogation']")
+    DRAG_ME_PREVENT = (By.XPATH, "//div[@class='pp-drop-container']/div[@id='dragBox']")
+    DROP_HERE_PREVENT = (By.XPATH, "//div[@class='pp-drop-container']/div[@id='dragBox']")
+    NOT_GREEDY_DROP_BOX_TEXT = (By.XPATH, "//div[@class='pp-drop-container']//div[@id='notGreedyDropBox']/p")
+    NOT_GREEDY_INNER_BOX = (By.XPATH, "//div[@class='pp-drop-container']//div[@id='notGreedyInnerDropBox']")
+    GREEDY_DROP_BOX_TEXT = (By.XPATH, "//div[@class='pp-drop-container']//div[@id='greedyDropBox']/p")
+    GREEDY_INNER_BOX = (By.XPATH, "//div[@class='pp-drop-container']//div[@id='greedyDropBoxInner']")
+
+    #Revert draggable
+    REVERT_TAB = (By.XPATH, "//a[@id='droppableExample-tab-revertable']")
+    WILL_REVERT = (By.XPATH, "//div[@class='revertable-drop-container']//div[@id='revertable']")
+    NOT_REVERT = (By.XPATH, "//div[@class='revertable-drop-container']//div[@id='notRevertable']")
+    DROP_REVERT = (By.XPATH, "//div[@class='revertable-drop-container']//div[@id='droppable']")
+
+
+
+
+
+
+
 
 
