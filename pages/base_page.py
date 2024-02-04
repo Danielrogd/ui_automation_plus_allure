@@ -1,5 +1,4 @@
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -47,3 +46,20 @@ class BasePage:
         action = ActionChains(self.driver)
         action.move_to_element(element)
         action.perform()
+    def action_double_click(self, element):
+        ActionChains(self.driver).double_click(element).perform()
+
+    def action_right_click(self, element):
+        ActionChains(self.driver).context_click(element).perform()
+
+    def action_tripple_click(self, element):
+        actions = ActionChains(self.driver)
+        actions.double_click(element).click(element).perform()
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementById('close-fixedban').remove();")
+
+    def check_new_tab_window(self, locator):
+        self.element_is_present(locator).click()
+        self.driver.switch_to.window(self.driver.window_handles[1])
