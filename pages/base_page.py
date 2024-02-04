@@ -47,6 +47,7 @@ class BasePage:
         action = ActionChains(self.driver)
         action.move_to_element(element)
         action.perform()
+
     def action_double_click(self, element):
         ActionChains(self.driver).double_click(element).perform()
 
